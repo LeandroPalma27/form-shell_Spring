@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido "<span th:text="${usuario.getUsername}"></span>"</h1>
+        <p th:text="${usuario.getEmail}"></p>
+        <p th:text="${usuario.getDni}"></p>
+        <p th:text="${usuario.getCodigoDescuento}"></p>
+        <p th:text="${#dates.format(usuario.getFechaNacimiento, 'dd/MM/yyyy')}"></p>
+        <p th:text="${usuario.getFechaActual}"></p>
+        <p th:text="${usuario.getPais}"></p>
+        <span th:each="pais: ${listaPaises}" th:if="${pais.id == usuario.getPaisP.getId}">
+            <p th:text="${pais.codigo}"></p>
+        </span>
+        <p th:text="${usuario.paisPv2.nombre}"></p>
+    </div>
+    <h4>Roles 1:</h4>
+    <ul th:each="rolesUsuario: ${usuario.getRoles}">
+        <li th:text="${rolesUsuario}"></li>
+    </ul>
+    <h4>Roles 2:</h4>
+    <ul th:each="rol: ${usuario.role}">
+        <li th:text="${rol.nombre}"></li>
+    </ul>
+    <p th:text="'Habilitado: ' + ${usuario.recibeNotificaciones}"></p>
+    <p th:text="${usuario.genero}"></p>
+    <p th:text="${usuario.valorSecreto}"></p>
+</body>
+</html>
